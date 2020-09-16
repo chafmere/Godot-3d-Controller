@@ -1,0 +1,8 @@
+[gd_resource type="ProceduralSky" format=2]
+
+[resource]
+sky_top_color = Color( 0.133333, 0.184314, 0.211765, 1 )
+sky_curve = 0.0636397
+ground_energy = 4.41
+sun_latitude = 69.88
+sun_angle_max = 0.0
