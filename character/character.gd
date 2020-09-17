@@ -12,8 +12,7 @@ export var sprintSpeed = 30
 export var dodgeSpeed = 50
 var direction = Vector3.ZERO
 var dodgeDirection = Vector3()
-#var verticalInput: float
-#var horizontalInput: float
+var angleDifference: float
 var velocity = Vector3.ZERO
 export var acceleration = 100
 export var sprintAccelerationg = 50
@@ -38,7 +37,7 @@ onready var animIdleBlend = animTree.get("parameters/idlerun/idleBlend/blend_amo
 onready var character = $characterNodes
 onready var target = $characterNodes/chaser
 var targetVector = Vector3()
-var turnSpead = 20
+var turnSpead = 100
 var blendamount
 
 #signal stuff
@@ -85,14 +84,13 @@ func _process(delta):
 			
 	animations(delta)
 	
-	#camera = get_node("tracker/Camera").get_global_transform()
 	velocity = move_and_slide(velocity, UP)
 	
 func animations(delta):
 	
 	match state:
 		MOVE:
-			rotatePlayer(delta)
+			rotatePlayer()
 			animStates.travel("idlerun")
 			setBlendProperty()
 			animTree.set("parameters/idlerun/idleBlend/blend_amount", blendamount)
@@ -100,25 +98,22 @@ func animations(delta):
 		JUMP:
 			animStates.travel("jump")
 		SPRINT:
-			rotatePlayer(delta)
+			rotatePlayer()
 			animStates.travel("idlerun")
 			setBlendProperty()
 			animTree.set("parameters/idlerun/sprintBlend/blend_amount", blendamount)
 		DODGE:
 			animStates.travel("dodge")
 
-func rotatePlayer(delta):
-
+func rotatePlayer():
+	
 	var angle = atan2(uniDir.x, uniDir.z)
-	var char_rot = character.get_rotation()
+	var charRot = character.get_rotation()
+	angleDifference = angle - charRot.y
 
-	if uniDir != Vector3.ZERO:
-		char_rot.y = lerp(char_rot.y, angle, turnSpead*delta)
-		#char_rot.y = angle
-		character.set_rotation(char_rot)
-		#print(char_rot)
-		#print(move_toward(char_rot.y,angle,turnSpead*delta))
-		##TODO Fix the turning direction
+	if uniDir != Vector3.ZERO:	
+		character.rotate_y(angleDifference)
+		#print(lerp_angle(angleDifference,0.00,turnSpead*delta))
 
 func setBlendProperty():
 	if state == MOVE:
@@ -132,10 +127,10 @@ func setBlendProperty():
 ##TODO Seperate these cunts so that sprint has a proper blend curve
 
 func inputController():
-	direction.z = Input.get_action_strength("ui_down")-Input.get_action_strength("ui_up")
-	direction.x = Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")
+	direction.x = Input.get_action_strength("ui_down")-Input.get_action_strength("ui_up")
+	direction.z = Input.get_action_strength("ui_right")-Input.get_action_strength("ui_left")
 	direction = direction.normalized()
-
+	
 	if Input.is_action_pressed("ui_up"):
 		uniDir += tracker.transform.basis.z 
 		dodgeDirection += tracker.transform.basis.z 
@@ -150,8 +145,8 @@ func inputController():
 		dodgeDirection -= tracker.transform.basis.x
 	
 	dodgeDirection = dodgeDirection.normalized()
-	uniDir = uniDir.normalized()*(abs(direction.z)+abs(direction.x))
-	#print(uniDir)
+	uniDir = uniDir.normalized()*(clamp((abs(direction.z)+abs(direction.x)),0,1))
+
 	emit_signal("currentDirection", uniDir) #feeds signal to the camera target so it can know where to look to
 	
 	if (Input.is_action_just_pressed("ui_accept") && floorGang.is_colliding()) && JumpOn:

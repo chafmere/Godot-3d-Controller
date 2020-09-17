@@ -391,7 +391,7 @@ tracks/52/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Sprinting Forward Roll"
 length = 0.7
 tracks/0/type = "transform"
@@ -773,75 +773,75 @@ tracks/52/keys = {
 } ]
 }
 
-[sub_resource type="CapsuleShape" id=2]
+[sub_resource type="CapsuleShape" id=3]
 radius = 0.900972
 height = 2.66369
 
-[sub_resource type="AnimationNodeAnimation" id=3]
+[sub_resource type="AnimationNodeAnimation" id=4]
 animation = "Sprinting Forward Roll"
 
-[sub_resource type="AnimationNodeAnimation" id=4]
+[sub_resource type="AnimationNodeAnimation" id=5]
 animation = "Roll"
 
-[sub_resource type="AnimationNodeOneShot" id=5]
+[sub_resource type="AnimationNodeOneShot" id=6]
 
-[sub_resource type="AnimationNodeAnimation" id=6]
+[sub_resource type="AnimationNodeAnimation" id=7]
 animation = "sprint-loop"
 
-[sub_resource type="AnimationNodeAnimation" id=19]
+[sub_resource type="AnimationNodeAnimation" id=8]
 animation = "Idle1-loop"
 
-[sub_resource type="AnimationNodeBlend2" id=8]
+[sub_resource type="AnimationNodeBlend2" id=9]
 
-[sub_resource type="AnimationNodeAnimation" id=9]
+[sub_resource type="AnimationNodeAnimation" id=10]
 animation = "Running5-loop"
 
-[sub_resource type="AnimationNodeBlend2" id=10]
+[sub_resource type="AnimationNodeBlend2" id=11]
 
-[sub_resource type="AnimationNodeBlendTree" id=11]
+[sub_resource type="AnimationNodeBlendTree" id=12]
 graph_offset = Vector2( 0, -6 )
-nodes/Animation/node = SubResource( 4 )
+nodes/Animation/node = SubResource( 5 )
 nodes/Animation/position = Vector2( 480, 240 )
-nodes/Roll/node = SubResource( 5 )
+nodes/Roll/node = SubResource( 6 )
 nodes/Roll/position = Vector2( 680, 60 )
-nodes/Sprint/node = SubResource( 6 )
+nodes/Sprint/node = SubResource( 7 )
 nodes/Sprint/position = Vector2( 280, 240 )
-nodes/idle/node = SubResource( 19 )
+nodes/idle/node = SubResource( 8 )
 nodes/idle/position = Vector2( 100, 80 )
-nodes/idleBlend/node = SubResource( 8 )
+nodes/idleBlend/node = SubResource( 9 )
 nodes/idleBlend/position = Vector2( 280, 60 )
 nodes/output/position = Vector2( 860, 60 )
-nodes/run/node = SubResource( 9 )
+nodes/run/node = SubResource( 10 )
 nodes/run/position = Vector2( 80, 200 )
-nodes/sprintBlend/node = SubResource( 10 )
+nodes/sprintBlend/node = SubResource( 11 )
 nodes/sprintBlend/position = Vector2( 480, 60 )
 node_connections = [ "output", 0, "Roll", "Roll", 0, "sprintBlend", "Roll", 1, "Animation", "idleBlend", 0, "idle", "idleBlend", 1, "run", "sprintBlend", 0, "idleBlend", "sprintBlend", 1, "Sprint" ]
 
-[sub_resource type="AnimationNodeAnimation" id=12]
+[sub_resource type="AnimationNodeAnimation" id=13]
 animation = "Jump2-loop"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id=13]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=14]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=15]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id=16]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=17]
 switch_mode = 2
 auto_advance = true
 
-[sub_resource type="AnimationNodeStateMachine" id=17]
-states/dodge/node = SubResource( 3 )
+[sub_resource type="AnimationNodeStateMachine" id=18]
+states/dodge/node = SubResource( 4 )
 states/dodge/position = Vector2( 760, 124 )
-states/idlerun/node = SubResource( 11 )
+states/idlerun/node = SubResource( 12 )
 states/idlerun/position = Vector2( 522, 124 )
-states/jump/node = SubResource( 12 )
+states/jump/node = SubResource( 13 )
 states/jump/position = Vector2( 522, 291 )
-transitions = [ "idlerun", "jump", SubResource( 13 ), "jump", "idlerun", SubResource( 14 ), "idlerun", "dodge", SubResource( 15 ), "dodge", "idlerun", SubResource( 16 ) ]
+transitions = [ "idlerun", "jump", SubResource( 14 ), "jump", "idlerun", SubResource( 15 ), "idlerun", "dodge", SubResource( 16 ), "dodge", "idlerun", SubResource( 17 ) ]
 start_node = "idlerun"
 graph_offset = Vector2( 152, 47 )
 
-[sub_resource type="AnimationNodeStateMachinePlayback" id=18]
+[sub_resource type="AnimationNodeStateMachinePlayback" id=19]
 
 [node name="character" type="KinematicBody"]
 script = ExtResource( 5 )
@@ -857,7 +857,7 @@ transform = Transform( 100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0 )
 
 [node name="AnimationPlayer" parent="characterNodes/Chibi" index="3"]
 anims/Roll = SubResource( 1 )
-"anims/Sprinting Forward Roll" = SubResource( 7 )
+"anims/Sprinting Forward Roll" = SubResource( 2 )
 
 [node name="RayCastFloor" type="RayCast" parent="characterNodes"]
 transform = Transform( 0.01, 0, 0, 0, 0.01, 0, 0, 0, 0.01, 0, 0.00284163, 0 )
@@ -876,13 +876,13 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 1, 0, 0, 0, -1.62921e-07, -1, 0, 1, -1.62921e-07, 0, 2.257, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource( 17 )
+tree_root = SubResource( 18 )
 anim_player = NodePath("../characterNodes/Chibi/AnimationPlayer")
 active = true
-parameters/playback = SubResource( 18 )
+parameters/playback = SubResource( 19 )
 parameters/idlerun/Roll/active = false
 parameters/idlerun/idleBlend/blend_amount = 0.0
 parameters/idlerun/sprintBlend/blend_amount = 0.0
@@ -906,7 +906,7 @@ texture = ExtResource( 4 )
 [node name="cameraTween" type="Tween" parent="cameraRig/tracker"]
 [connection signal="currentDirection" from="." to="characterNodes/chaser" method="_on_character_currentDirection"]
 [connection signal="currentState" from="." to="cameraRig/tracker" method="_on_character_currentState"]
-[connection signal="freeCamOn" from="." to="characterNodes/chaser" method="_on_character_freeCamOn"]
 [connection signal="freeCamOn" from="." to="cameraRig/tracker" method="_on_character_freeCamOn"]
+[connection signal="freeCamOn" from="." to="characterNodes/chaser" method="_on_character_freeCamOn"]
 
 [editable path="characterNodes/Chibi"]

@@ -18,6 +18,13 @@ var cameraMouseSensitivity = .001
 var mouseSensitivity = cameraMouseSensitivity * 40
 var cameraControl
 
+##JoyStick Control
+var joyAxis: Vector3
+var joyPressure: Vector3
+var joyAxisVelocity: Vector3
+var joySensitivity = .03
+var tryJoyStick: bool
+
 
 func _ready():
 	set_as_toplevel(true)
@@ -32,6 +39,17 @@ func _process(delta):
 	
 	cameraTween.interpolate_property(tracker,"translation", cameraPos, targetPosition, cameraSpeed,Tween.TRANS_LINEAR,Tween.EASE_IN_OUT)
 	cameraTween.start()
+	
+	if cameraControl:
+		joyAxis.y = Input.get_action_strength("rightStickUp")-Input.get_action_strength("rightStickDown")
+		joyAxis.x = Input.get_action_strength("rightStickRight")-Input.get_action_strength("rightStickLeft")
+		joyAxis = joyAxis.normalized()
+		
+		if joyAxis != Vector3.ZERO:
+			tryJoyStick = true
+
+		if tryJoyStick:
+			setJoyStickVelocity(delta)
 
 
 func _on_character_currentState(state):
@@ -46,7 +64,7 @@ func _on_character_currentState(state):
 			targetPosition = chaserPosition
 		3:
 			targetPosition = chaserPosition
-	print(state)
+
 
 func _input(event):
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -54,17 +72,43 @@ func _input(event):
 	
 	if cameraControl:
 		if event is InputEventMouseMotion:
-			cameraLook(event)
-
-func cameraLook(event):
+			mouseCameraLook(event)
+			tryJoyStick = false
+			
+func mouseCameraLook(event):
 	rotX += event.relative.x * cameraMouseSensitivity
 	rotY += event.relative.y * cameraMouseSensitivity
+	#print(rotY)
 	# reset rotation every frame
 	transform.basis = Basis()
 	rotate_object_local(Vector3(0,1,0),-rotX) # first rotate in Y
 	rotate_object_local(Vector3(1,0,0),rotY) # then rotate in X
 	rotY = clamp(rotY, -.8,.65)
 
+func setJoyStickVelocity(delta):
+	#joyAxisVelocity = lerp(joyAxisVelocity, joyAxis*PI, 1*delta )
+	if Input.is_action_pressed("rightStickUp"):
+		joyPressure.y += joySensitivity
+	elif Input.is_action_pressed("rightStickDown"):
+		joyPressure.y -= joySensitivity
+	if Input.is_action_pressed("rightStickRight"):
+		joyPressure.x -= joySensitivity
+	elif Input.is_action_pressed("rightStickLeft"):
+		joyPressure.x += joySensitivity
+	joyPressure.y = clamp(joyPressure.y,-.6,.8)
+	
+	if joyAxis != Vector3.ZERO:
+		joyAxisVelocity  = lerp(joyAxisVelocity, joyPressure, 7*delta )
+	else:
+		joyAxisVelocity  = lerp(joyAxisVelocity, joyPressure, 3*delta )
+		
+	joyCameraLook(joyAxisVelocity)
+
+
+func joyCameraLook(Axis: Vector3):
+	transform.basis = Basis()
+	rotate_object_local(Vector3(0,1,0),-Axis.x) # first rotate in Y
+	rotate_object_local(Vector3(1,0,0),Axis.y)# then rotate in X
 
 func _on_character_freeCamOn(FreeCam):
 	cameraControl = FreeCam
