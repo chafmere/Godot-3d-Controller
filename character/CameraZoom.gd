@@ -17,7 +17,7 @@ func _ready():
 	cameraCurrentPoint = cameraZoomOrginal
 	
 
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_released("mouseScrollUp"):
 		if cameraZoomPoint == minZoom:
 			pass

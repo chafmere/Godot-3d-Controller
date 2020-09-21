@@ -1,0 +1,68 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://enviroMaterials/BuildingBlock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://default_env.tres" type="Environment" id=3]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=1]
+
+[node name="Spatial" type="Spatial"]
+
+[node name="Spatial" type="Spatial" parent="."]
+
+[node name="BuildingBlock" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 200, 0, 0, 0, 1, 0, 0, 0, 200, 0.01828, 9.53674e-07, 0.0388482 )
+
+[node name="BuildingBlock2" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 20, 0, 0, 0, 220, -200.832, 16.2122, 0 )
+
+[node name="BuildingBlock3" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 20, 0, 0, 0, 200, 201.168, 19.1508, 0 )
+
+[node name="BuildingBlock4" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -220, 0, 20, 0, 1, 0, -9.61651e-06, -0.83231, 16.2122, -201 )
+
+[node name="BuildingBlock5" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( -4.37114e-08, 0, -210, 0, 20, 0, 1, 0, -9.17939e-06, -0.83231, 19.2122, 201 )
+
+[node name="BuildingBlock6" parent="Spatial" instance=ExtResource( 2 )]
+transform = Transform( 10, 0, 0, 0, 1, 0, 0, 0, 10, 2.13187, 8.32133, -19.4702 )
+
+[node name="character" parent="." instance=ExtResource( 1 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.840668, 1.2, -0.558086 )
+timeToJumpApex = 1.0
+jumpHeight = 0.8
+
+[node name="SwordBone" parent="character/characterNodes/Chibi/Armature/Skeleton" index="1"]
+transform = Transform( 0.318841, 0.903559, -0.286221, 0.437233, -0.408148, -0.8014, -0.840932, 0.130374, -0.5252, 1.09563, 26.9357, 2.26833 )
+
+[node name="Sword" parent="character/characterNodes/Chibi/Armature/Skeleton/SwordBone" index="0"]
+transform = Transform( 1.31029, -3.6891, -9.20183, -1.25531, 9.14542, -3.84523, 9.83399, 1.65895, 0.735221, 6.43539, -7.74773, 0.910204 )
+
+[node name="ShieldBone" parent="character/characterNodes/Chibi/Armature/Skeleton" index="2"]
+transform = Transform( 0.318841, 0.903559, -0.286221, 0.437233, -0.408148, -0.8014, -0.840932, 0.130374, -0.5252, 1.09563, 26.9357, 2.26833 )
+
+[node name="Shield" parent="character/characterNodes/Chibi/Armature/Skeleton/ShieldBone" index="0"]
+transform = Transform( 1.83969, 2.31792, 9.55208, -9.7955, 1.23808, 1.58612, -0.814979, -9.64853, 2.49828, 4.31147, -1.05059, 9.64812 )
+
+[node name="AnimationTree" parent="character" index="2"]
+active = true
+process_mode = 0
+parameters/playback = SubResource( 1 )
+
+[node name="Camera" parent="character/cameraRig/tracker" index="0"]
+environment = ExtResource( 3 )
+
+[node name="Sprite3D" parent="character/cameraRig/tracker" index="1"]
+visible = false
+
+[node name="DirectionalLight" type="DirectionalLight" parent="."]
+transform = Transform( 1, 0, 0, 0, 0.5442, 0.838956, 0, -0.838956, 0.5442, 22.0239, 11.5862, 0 )
+light_energy = 0.65
+shadow_enabled = true
+
+[editable path="Spatial/BuildingBlock6"]
+
+[editable path="character"]
+
+[editable path="character/characterNodes/Chibi"]

@@ -64,6 +64,10 @@ func _on_character_currentState(state):
 			targetPosition = chaserPosition
 		3:
 			targetPosition = chaserPosition
+		4:
+			targetPosition = chaserPosition
+		5:
+			targetPosition = chaserPosition
 
 
 func _input(event):

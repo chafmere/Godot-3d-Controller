@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Character/Shield/source/SM_Goblin_Shield.fbx" type="PackedScene" id=1]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 1.6383, 1.91862, 0.334702 )
+
+[node name="Shield" type="Spatial"]
+
+[node name="shieldAttachment" parent="." instance=ExtResource( 1 )]
+
+[node name="SM_Goblin_Shield2" parent="shieldAttachment" index="0"]
+transform = Transform( 2, 0, 0, 0, -3.25841e-07, 2, 0, -2, -3.25841e-07, 0, 0, 0 )
+
+[node name="Area" type="Area" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.523579, 0 )
+
+[node name="CollisionShape" type="CollisionShape" parent="Area"]
+shape = SubResource( 1 )
+disabled = true
+
+[editable path="shieldAttachment"]
