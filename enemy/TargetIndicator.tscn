@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://character/Target.png" type="Texture" id=1]
+
+[node name="TargetIndicator" type="Spatial"]
+
+[node name="target" type="Sprite3D" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.04519, 0 )
+pixel_size = 0.02
+texture = ExtResource( 1 )

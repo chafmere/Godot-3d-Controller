@@ -11,11 +11,14 @@ onready var zoomTween = $zoomTween
 onready var mainCamera = $"."
 onready var target = get_parent().get_parent().get_parent().get_node("characterNodes/chaser")
 
+
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	cameraZoomPoint = cameraZoomOrginal
 	cameraCurrentPoint = cameraZoomOrginal
-	
 
 func _process(_delta):
 	if Input.is_action_just_released("mouseScrollUp"):
@@ -37,4 +40,5 @@ func _process(_delta):
 	zoomTween.interpolate_property(mainCamera,"translation",cameraCurrentPoint,cameraZoomPoint,.1,Tween.TRANS_SINE,Tween.EASE_IN_OUT)
 	zoomTween.start()
 	
+
 	

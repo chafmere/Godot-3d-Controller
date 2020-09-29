@@ -211,6 +211,7 @@ func attackState(delta):
 	stopMoving(delta)
 
 	if Input.is_action_pressed("attack"):
+		print(attackCount)
 		combo = true
 		if currentAnimation == "attack1":
 			attackCount = 1
