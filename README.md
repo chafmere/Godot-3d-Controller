@@ -8,15 +8,11 @@ With mouse and keyboard and xbox controller.
 
 Things to add:
 
-Combat Logic
-Ledge Climbing
-Targeting
-More Robust State Machine
-Additional Credit
+Combat Logic Ledge Climbing Targeting More Robust State Machine Additional Credit
 
-Character Model by DePotatoes link (https://www.blendswap.com/blend/21260), animations from Mixamo. 
+Character Model by DePotatoes link (https://www.blendswap.com/blend/21260), animations from Mixamo.
 
-Grid Texture from Wahooney  (https://wahooney.itch.io/texture-grid-generator)
+Grid Texture from Wahooney (https://wahooney.itch.io/texture-grid-generator)
 
 Controls:
 

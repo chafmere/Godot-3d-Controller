@@ -368,3 +368,75 @@ tracks/51/loop_wrap = true
 tracks/51/imported = true
 tracks/51/enabled = true
 tracks/51/keys = PoolRealArray( 0, 1, -0.830783, 0.11906, -0.176307, 0.0140643, -0.00130599, 0.058963, 0.99816, 1, 1, 1, 0.0666667, 1, -0.841651, 0.207357, -0.441552, 0.0105346, -0.00420239, 0.072213, 0.997325, 1, 1, 1, 0.133333, 1, -0.922537, 0.0948544, -0.810556, 0.0290743, 0.0126607, 0.0591298, 0.997747, 1, 1, 1, 0.2, 1, -0.813917, -0.423772, -0.795732, 0.0157753, 0.0312015, 0.0395739, 0.998605, 1, 1, 1, 0.266667, 1, -0.67913, -0.585019, -1.28321, -0.0220499, 0.0743994, 0.0397516, 0.996192, 1, 1, 1, 0.333333, 1, -0.557255, -0.495052, -1.47032, -0.0111374, 0.134888, 0.0148735, 0.990687, 1, 1, 1, 0.4, 1, -0.511511, 0.234073, -1.86677, 0.0347296, 0.152295, -0.0555441, 0.986162, 1, 1, 1, 0.466667, 1, -0.433222, 0.674168, -1.65821, 0.0669481, 0.135411, -0.0581165, 0.986815, 1, 1, 1, 0.533333, 1, -0.448649, 0.262258, -1.17623, 0.0365633, 0.110261, -0.0217515, 0.992992, 1, 1, 1, 0.6, 1, -0.514625, -0.229688, -0.614566, -0.0143954, 0.0954024, -0.000688445, 0.995334, 1, 1, 1, 0.666667, 1, -0.588478, -0.357141, -0.0394506, -0.0132389, 0.0555181, 0.00954062, 0.998324, 1, 1, 1, 0.733333, 1, -0.829838, 0.119048, -0.176472, 0.0140643, -0.00130599, 0.058963, 0.99816, 1, 1, 1 )
+tracks/52/type = "value"
+tracks/52/path = NodePath("Armature/Skeleton/SwordBone:bone_name")
+tracks/52/interp = 1
+tracks/52/loop_wrap = true
+tracks/52/imported = false
+tracks/52/enabled = true
+tracks/52/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "right_hand" ]
+}
+tracks/53/type = "value"
+tracks/53/path = NodePath("Armature/Skeleton/ShieldBone:bone_name")
+tracks/53/interp = 1
+tracks/53/loop_wrap = true
+tracks/53/imported = false
+tracks/53/enabled = true
+tracks/53/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "left_arm" ]
+}
+tracks/54/type = "value"
+tracks/54/path = NodePath("Armature/Skeleton/ShieldBone/Shield:translation")
+tracks/54/interp = 1
+tracks/54/loop_wrap = true
+tracks/54/imported = false
+tracks/54/enabled = true
+tracks/54/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 3.15974, 9.25683, 2.03908 ), Vector3( 1.66952, 9.74586, 1.94268 ), Vector3( 2.02082, 8.60957, 1.62386 ), Vector3( 2.40361, 9.0879, 1.59804 ) ]
+}
+tracks/55/type = "value"
+tracks/55/path = NodePath("Armature/Skeleton/ShieldBone/Shield:rotation_degrees")
+tracks/55/interp = 1
+tracks/55/loop_wrap = true
+tracks/55/imported = false
+tracks/55/enabled = true
+tracks/55/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -22.3166, 146.096, -108.638 ), Vector3( -30.1161, 155.649, -116.669 ), Vector3( -27.1913, 152.067, -113.658 ), Vector3( -21.0715, 147.694, -122.288 ) ]
+}
+tracks/56/type = "value"
+tracks/56/path = NodePath("Armature/Skeleton/SwordBone/Sword:translation")
+tracks/56/interp = 1
+tracks/56/loop_wrap = true
+tracks/56/imported = false
+tracks/56/enabled = true
+tracks/56/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( -0.399089, 1.27324, 0.639216 ) ]
+}
+tracks/57/type = "value"
+tracks/57/path = NodePath("Armature/Skeleton/SwordBone/Sword:rotation_degrees")
+tracks/57/interp = 1
+tracks/57/loop_wrap = true
+tracks/57/imported = false
+tracks/57/enabled = true
+tracks/57/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 32.0858, 17.8137, -64.1491 ) ]
+}
