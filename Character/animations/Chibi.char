@@ -1,9 +1,0 @@
-{
-    "animations": {
-        "idle": "Idle(1)",
-        "running": "Running(5)",
-        "walking": ""
-    },
-    "characterName": "Chibi",
-    "meshFileName": "Chibi.glb"
-}

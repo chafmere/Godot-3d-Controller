@@ -56,8 +56,9 @@ func _on_animation_finished(anim_name):
 func _change_state(state_name):
 	if not _active:
 		return
-	current_state.exit()
+	
 	previous_state = current_state
+	current_state.exit()
 	
 	if state_name == "previous":
 		states_stack.pop_front()
@@ -67,5 +68,5 @@ func _change_state(state_name):
 	current_state = states_stack[0]
 	emit_signal("state_changed", current_state)
 	
-	if state_name != "previous":
-		current_state.enter()
+#	if state_name != "previous":
+	current_state.enter()
