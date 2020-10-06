@@ -1,0 +1,19 @@
+[remap]
+
+importer="wavefront_obj"
+type="Mesh"
+path="res://.import/chibi base body.obj-dfe6ad45fe2cb8f85107df650085ae99.mesh"
+
+[deps]
+
+files=[ "res://.import/chibi base body.obj-dfe6ad45fe2cb8f85107df650085ae99.mesh" ]
+
+source_file="res://Character/models_and_animations/chibi base body.obj"
+dest_files=[ "res://.import/chibi base body.obj-dfe6ad45fe2cb8f85107df650085ae99.mesh", "res://.import/chibi base body.obj-dfe6ad45fe2cb8f85107df650085ae99.mesh" ]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3( 1, 1, 1 )
+offset_mesh=Vector3( 0, 0, 0 )
+optimize_mesh=true

@@ -17,8 +17,8 @@ func _change_state(state_name):
 	"""
 	if not _active:
 		return
-	#if state_name in ["block", "jump", "attack"]: ##Check behaviour and return if necessary.
-	#	states_stack.push_front(states_map[state_name])
+	if state_name in ["dodge", "attack", "jump"]: ##Check behaviour and return if necessary.
+		states_stack.push_front(states_map[state_name])
 	if state_name == "sprint" and current_state == $Move:
 		$Sprint.initialize($Move.velocity)
 	if state_name == "move" and current_state == $Sprint || current_state == $Idle:
@@ -40,10 +40,11 @@ func _change_state(state_name):
 			$Dodge.initialize($Sprint.velocity)
 	._change_state(state_name)
 
+
 func _input(event):
-	if event.is_action_pressed("attack"):
-		if current_state == $Attack:
-			return
-		_change_state("attack")
-		return
+#	if event.is_action_pressed("attack"):
+#		if current_state == $Attack:
+#			return
+#		_change_state("attack")
+#		return
 	current_state.handle_input(event)

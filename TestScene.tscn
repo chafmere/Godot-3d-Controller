@@ -51,31 +51,29 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -7.94734, 4.34565, 14.8229 )
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76319, 11.7804, -11.099 )
 
 [node name="character" parent="." instance=ExtResource( 1 )]
-transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -14.558, 1.00055, 16.4348 )
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 2.10737, 9.32188, -18.2126 )
 
 [node name="Skeleton" parent="character/characterNodes/Chibi/Armature" index="0"]
 bones/7/bound_children = [ NodePath("SwordBone"), NodePath("ShieldBone") ]
+bones/8/bound_children = [  ]
+bones/34/bound_children = [  ]
 
 [node name="SwordBone" parent="character/characterNodes/Chibi/Armature/Skeleton" index="1"]
-transform = Transform( 0.290201, 0.922097, -0.255972, 0.405671, -0.360797, -0.839795, -0.866726, 0.139869, -0.478771, 1.2166, 27.0573, 2.15078 )
+transform = Transform( 0.322783, 0.900328, -0.291927, 0.442205, -0.416158, -0.794523, -0.836819, 0.127367, -0.532458, 1.07373, 26.9172, 2.29667 )
+bone_name = "left_shoulder"
 
 [node name="Sword" parent="character/characterNodes/Chibi/Armature/Skeleton/SwordBone" index="0"]
-transform = Transform( 1.31029, -3.6891, -9.20183, -1.25531, 9.14542, -3.84523, 9.834, 1.65895, 0.735221, 6.43539, -7.74773, 0.910204 )
+transform = Transform( 1.31029, -3.6891, -9.20183, -1.25531, 9.14542, -3.84523, 9.83399, 1.65895, 0.735221, 6.43539, -7.74773, 0.910204 )
 
 [node name="ShieldBone" parent="character/characterNodes/Chibi/Armature/Skeleton" index="2"]
-transform = Transform( 0.290201, 0.922097, -0.255972, 0.405671, -0.360797, -0.839795, -0.866726, 0.139869, -0.478771, 1.2166, 27.0573, 2.15078 )
+transform = Transform( 0.322783, 0.900328, -0.291927, 0.442205, -0.416158, -0.794523, -0.836819, 0.127367, -0.532458, 1.07373, 26.9172, 2.29667 )
+bone_name = "left_shoulder"
 
 [node name="Shield" parent="character/characterNodes/Chibi/Armature/Skeleton/ShieldBone" index="0"]
-transform = Transform( 1.83968, 2.31793, 9.55209, -9.79547, 1.23808, 1.58612, -0.814976, -9.64854, 2.49828, 4.31147, -1.05059, 9.64812 )
-
-[node name="targetArea" parent="character/characterNodes/targetDetectionArea" index="0"]
-disabled = false
+transform = Transform( -1.25804, 5.49428, 8.26013, -9.5811, -2.83223, 0.424655, 2.57278, -7.86071, 5.62045, 0.147236, 0.273199, 9.12402 )
 
 [node name="AnimationTree" parent="character" index="2"]
 parameters/playback = SubResource( 1 )
-
-[node name="Block" parent="character/States" index="6"]
-cameraPath = NodePath("../../cameraRig/tracker/Camera")
 
 [editable path="Spatial/BuildingBlock6"]
 
